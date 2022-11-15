@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+    :root{
+        --branco:#fff;
+        --preto:#000;
+        --bg:#333;
+        --vermelho:#FF2A25;
+        --vinho:#981916;
+        --rosa-claro:#FFA9A7;
+        --rosa-escuro:#FF7F7C;
+        --rosinha:#f0c1c0;
+        --cinza-escuro:#455A64;
+
+}
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+    width:100% ;
+    margin: 0 auto;
+}
+
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: #f1f1f1;
+    min-height: 100vh;
+}
+
+/*area de login*/
+
+#container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+}
+
+/*animacao*/
+
+.animacao{
+    background-color: var(--bg);
+    position: absolute;
+    width: 100%;
+    height: 60vh;
+}
+
+.animacao .foto-tela{
+    width: 28%;
+    height: 25%;
+    margin-left: 15rem;
+    margin-bottom: 30rem;
+}
+
+/*login-adm*/
+
+.area-login{
+    background-color: var(--rosa-escuro);
+    position: absolute;
+    width: 30%;
+    height: 65vh;
+    margin-left: 55%;
+    padding: 50px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 10px 10px 21px 0px rgba(0,0,0,0.75);
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    color: var(--branco);
+}
+
+input{
+    margin-bottom: 10px;
+    margin-top:10px ;
+    height: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    font-size: 15px;
+    outline: none;
+}
+
+ .form-login > h1{
+    color: var(--branco);
+}
+
+h1{
+    align-items: center;
+    justify-content: center;
+    color: var(--bg);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form-login {
+    
+    width: 100%;
+    height: 60%;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.form-login{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.form-login [type="submit"]{
+    height: 50px;
+    width: 50%;
+    background-color: var(--branco);
+    color: var(--rosa-escuro);
+    font-weight: bold;
+}
+
+.form-login [type="submit"]:hover{
+    cursor: pointer;
+}
+
+
+input{
+    background: var(--branco);
+}
+
+.botao-2 > button{
+    margin-top: 10px;
+    height: 50px;
+    width: 50%;
+    background-color: var(--branco);
+    color: var(--rosa-escuro);
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a{
+    text-decoration: none;
+    color: var(--rosa-escuro);
+    font-weight: bold;
+}
+.botao-2{
+    margin-top: 10px;
+    display: flex;
+    font-weight: bold;
+    gap: 8px;
+}

@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+:root{
+    --branco:#fff;
+    --preto:#000;
+    --bg:#333;
+    --vermelho:#FF2A25;
+    --vinho:#981916;
+    --rosa-claro:#FFA9A7;
+    --rosa-escuro:#FF7F7C;
+    --rosinha:#f0c1c0;
+    --cinza-escuro:#455A64;
+
+}
+
+/* Parte do Cardapio */
+
+.container{
+    margin-top: 50px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    background: var(--branco);
+}
+h3{
+    font-size: 34px;
+    font-weight: 700;
+}
+.container .card{
+    margin: 20px;
+    padding: 20px;
+    width: 30%;
+    display: inline-block;
+    box-shadow: 20px 20px 50px var(--rosinha);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4.3px);
+    -webkit-backdrop-filter: blur(4.3px);
+}
+.container .card .content img{
+    border-radius: 20px;
+    width: 100%;
+}
+
+.vermais{
+    color: var(--bg);
+}
+
+.vermais:hover{
+    color: var(--rosa-escuro);
+}
