@@ -23,8 +23,9 @@ body{
 .body2{
     height: 80%;
     margin-top: 50px;
-    padding-top: 100px;
+    padding-top: 3%;
     padding-left: 50px;
+    padding-right: 50px;
     background: var(--bg);
     color: var(--branco);
 }
@@ -55,11 +56,6 @@ p{
     max-width: 1500px;
     font-family: 'Poppins', sans-serif;
 }
-.contato{
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
 
 aside{
     align-items: center;
@@ -69,7 +65,10 @@ aside{
 }
 
 .foto-sobre{
-    height: 90vh;
+    max-width: 70%;
+    max-height: 70%;
+    padding-left: 10%;
+    padding-bottom: 5%;
 }
 
 

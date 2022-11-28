@@ -67,6 +67,11 @@ label {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+#preview{
+    width: 200px;
+    height: 300px;
+}
+
 #select {
     border: none;
     width: 500px;

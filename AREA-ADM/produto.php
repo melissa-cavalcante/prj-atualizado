@@ -1,5 +1,9 @@
 <?php include "verifica-logado-adm.php"; ?>
-<?php include "../MODEL/Produto.php"; ?>
+<?php include "../MODEL/Produto.php";
+include "../DAO/ProdutoDao.php";
+$produtoDao = new ProdutoDao();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -92,17 +96,21 @@
         </div>
         <div class="content">
 
-            <form action="cadastra-produto.php" id="formCadastro" method="post">
+            <form action="cadastra-produto.php" id="formCadastro" method="post" enctype="multipart/form-data">
                 <label>Produtos</label>
                 <input type="text" name="produto" id="txtProduto" placeholder="Nome do produto">
                 <input type="text" name="preco" id="preco" placeholder="Preço">
+                <input type="file" accept="image/*" id="foto" name="foto">
+                <div class="form-group col-md-4">
+                    <img id="preview" src="" alt="..." class="img-thumbnail">
+                </div>
                 <select name="categoria" id="select" placeholder="Categoria">
                     <?php
                     $pdo = Conexao::conectar();
                     $stmt = $pdo->prepare("select idcategoria, cateegoria from tbcategoria");
                     $stmt->execute();
                     while ($row = $stmt->fetch(PDO::FETCH_BOTH)) { ?>
-                    <option value="<?php echo $row['idcategoria']; ?>"> <?php echo $row['cateegoria']; ?> </option>
+                        <option value="<?php echo $row['idcategoria']; ?>"> <?php echo $row['cateegoria']; ?> </option>
                     <?php } ?>
                 </select>
                 <input type="submit" value="cadastrar">
@@ -116,32 +124,60 @@
                     </div>
                     <table>
                         <tr>
+                            <td width=150px><b>Foto</b></td>
                             <td><b>Nome</b></td>
                             <td><b>Categoria</b></td>
                             <td><b>Preço</b></td>
-                            <td><b>Opção</b></td>
+                            <td><b>Editar</b></td>
+                            <td><b>Excluir</b></td>
                         </tr>
+                        <?php
+                        if (isset($_GET['idProduto'])) {
+                            $produtoDao->delete($_GET['idProduto']);
+                        } ?>
                         <?php
 
                         $pdo = Conexao::conectar();
-                        $stmt = $pdo->prepare("select nomeProduto, cateegoria, precoProduto from tbproduto
+                        $stmt = $pdo->prepare("select idProduto, fotoProduto, nomeProduto, cateegoria, precoProduto from tbproduto
                         inner join tbCategoria on tbcategoria.idcategoria = tbproduto.idcategoria
                         ");
-                        
+
                         $stmt->execute();
 
                         while ($row = $stmt->fetch(PDO::FETCH_BOTH)) { ?>
                             <tr>
-                                <td><?php echo ($row['nomeProduto']) ?></td>
-                                <td><?php echo ($row['cateegoria']) ?></td>
-                                <td><?php echo ($row['precoProduto']) ?></td>
-                                <td><a href="#" class="btn">Veja</a></td>
+                                <td id="prod"> <img src="../img/<?php echo ($row['fotoProduto']); //e aqui ta puxando o nome da foto 
+                                                                ?>" class="rounded" width="100%"></td>
+                                <td id="prod"><?php echo ($row['nomeProduto']) ?></td>
+                                <td id="prod"><?php echo ($row['cateegoria']) ?></td>
+                                <td id="prod"><?php echo ($row['precoProduto']) ?></td>
+                                <td id="prod"><a href="#" class="btn">Editar</a></td>
+                                <td id="prod"><a href="?idProduto=<?php echo $row['idProduto']; ?>" class="btn">Excluir</a></td>
                             </tr>
                         <?php } ?>
                     </table>
                 </div>
             </div>
         </div>
+
+        <?php
+        echo ($row);
+        ?>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+        <script>
+            function readImage() {
+                if (this.files && this.files[0]) {
+                    var file = new FileReader();
+                    file.onload = function(e) {
+                        document.getElementById("preview").src = e.target.result;
+                    };
+                    file.readAsDataURL(this.files[0]);
+                }
+            }
+            document.getElementById("foto").addEventListener("change", readImage, false);
+        </script>
+
 
     </div>
 </body>

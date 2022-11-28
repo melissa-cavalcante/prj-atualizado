@@ -1,10 +1,3 @@
-<?php include "verifica-logado-adm.php"; ?>
-<?php include "../MODEL/Categoria.php"; ?>
-
-<?php
-$categoria = new Categoria;
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,15 +5,16 @@ $categoria = new Categoria;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>área admistrador</title>
-    <!--link css do css-->
     <link rel="stylesheet" href="../css's/area-produto.css">
     <link rel="stylesheet" href="../css's/adm.css">
 
     <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
+
+    <title>Area do Cliente</title>
 </head>
 
 <body>
+
     <div class="side-menu">
         <header>
 
@@ -40,9 +34,14 @@ $categoria = new Categoria;
                     <lord-icon src="https://cdn.lordicon.com/zdiigbly.json" trigger="hover" colors="primary:#fff,secondary:#e74c4c" style="width:50px;height:50px"></lord-icon>&nbsp;<span>produtos</span>
                 </li>
             </a>
-            <a href="./area-produtos.php">
+            <a href="./cadastro-categoria.php">
                 <li>
                     <lord-icon src="https://cdn.lordicon.com/hursldrn.json" trigger="hover" colors="primary:#fff,secondary:#e74c4c" style="width:50px;height:50px"></lord-icon>&nbsp;<span>categorias</span>
+                </li>
+            </a>
+            <a href="./area-cliente.php">
+                <li>
+                <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" colors="primary:#fff,secondary:#fff" style="width: 50px;height:50px"></lord-icon>&nbsp;<span>clientes</span>
                 </li>
             </a>
             <a href="./area-produtos.php">
@@ -52,6 +51,7 @@ $categoria = new Categoria;
             </a>
         </ul>
     </div>
+
     <div class="container">
         <div class="header">
             <div class="nav">
@@ -73,39 +73,18 @@ $categoria = new Categoria;
             <div class="cards" id="cards">
                 <div class="card" id="card">
                     <div class="box" id="box">
-                        <?php
 
-                        $pdo = Conexao::conectar();
-                        $stmt = $pdo->prepare("select cateegoria from tbcategoria");
-                        $stmt->execute();
-
-                        $query = "SELECT COUNT(idCategoria) AS qtd FROM tbcategoria";
-                        $resultadoCategoria = $pdo->query($query);
-                        $qtdCategoria = $resultadoCategoria->fetchAll(PDO::FETCH_COLUMN);
-
-                        ?>
-                        <h1><?php echo ($qtdCategoria[0]); ?></h1>
-                        <?php
-                        while ($row = $stmt->fetch(PDO::FETCH_BOTH)) { ?>
+                        <h3>Clientes</h3>
 
 
-                        <?php } ?>
-
-                        <h3>Categorias</h3>
                     </div>
                     <div class="icon-case">
-                        <lord-icon src="https://cdn.lordicon.com/hursldrn.json" trigger="hover" colors="primary:#e74c4c,secondary:#e74c4c" style="width:80px;height:80px"></lord-icon>
+                    <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" colors="primary:#e74c4c,secondary:#e74c4c" style="width:80px;height:80px"></lord-icon>
                     </div>
                 </div>
             </div>
         </div>
         <div class="content">
-
-            <form action="cadastra-categoria.php" id="formCadastro" method="post">
-                <label>Categoria</label>
-                <input type="text" name="categoria" id="categoria" placeholder="Categoria">
-                <input type="submit" value="cadastrar">
-            </form>
             <div class="content-2">
                 <div class="recent-payments">
                     <div class="title">
@@ -114,23 +93,28 @@ $categoria = new Categoria;
                     </div>
                     <table>
                         <tr>
-                            <td style="font-weight: bolder;">ID da Categoria</td>
-                            <td style="font-weight: bolder;">Categoria</td>
-                            <td style="font-weight: bolder;">Editar</td>
-                            <td style="font-weight: bolder;">Excluir</td>
+                            <td style="font-weight: bolder;">ID do Cliente</td>
+                            <td style="font-weight: bolder;">Nome do cliente</td>
+                            <td style="font-weight: bolder;">Email do cliente</td>
                         </tr>
                         <?php
-
-                        $pdo = Conexao::conectar();
-                        $stmt = $pdo->prepare("select cateegoria, idCategoria from tbcategoria");
-                        $stmt->execute();
-
-                        while ($row = $stmt->fetch(PDO::FETCH_BOTH)) { ?>
-                            <tr id="categorias">
-                                <td><?php echo ($row['idCategoria']) ?></td>
-                                <td><?php echo ($row['cateegoria']) ?></td>
-                                <td><a href="#" class="btn">Editar</a></td>
-                                <td><a href="" class="btn">Excluir</a></td>
+                        require_once '../DAO/ClienteDao.php';
+                        try {
+                            $listacliente = ClienteDao::listar();
+                        } catch (Exception $e) {
+                            echo '<pre>';
+                            print_r($e);
+                            echo '</pre>';
+                            echo $e->getMessage();
+                        }
+                        ?>
+                        <?php foreach ($listacliente as $cliente) { ?>
+                            <tr>
+                                <th scope="row"><?php echo $cliente['idCliente']; ?></th>
+                                <td><?php echo $cliente['nomeCliente']; ?></td>
+                                <td><?php echo $cliente['emailCliente'] ?></td>
+                                <td>ícone</td>
+                                <td>@ícone</td>
                             </tr>
                         <?php } ?>
                     </table>

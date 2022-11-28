@@ -1,5 +1,6 @@
 <?php include "verifica-logado-adm.php"; ?>
 <?php include "../MODEL/Categoria.php"; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 

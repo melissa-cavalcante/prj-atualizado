@@ -1,5 +1,7 @@
 <?php 
 
+include "../Conexao.php";
+
     class Cliente{
         private $id;
         private $nomeCliente;
@@ -75,46 +77,46 @@
             $this -> nomeCliente = $nomeCliente;
         }
 
-      /* public function setCpfCliente($cpfCliente){
+       public function setCpfCliente($cpfCliente){
             $this -> cpfCliente = $cpfCliente;
         }
 
-        public function setId($id){
-            $this -> id = $id;
+        public function setEmailCliente($emailCliente){
+            $this -> emailCliente = $emailCliente;
         }
 
-        public function setId($id){
-            $this -> id = $id;
+        public function setSenhaCliente($senhaCliente){
+            $this -> senhaCliente = $senhaCliente;
         }
 
-        public function setId($id){
-            $this -> id = $id;
+        public function setLogradouroCliente($logradouroCliente){
+            $this -> logradouroCliente = $logradouroCliente;
         }
 
-        public function setId($id){
-            $this -> id = $id;
+        public function setNumLogCliente($numLogCliente){
+            $this -> numLogCliente = $numLogCliente;
         }
 
-        public function setId($id){
-            $this -> id = $id;
+        public function setCompCliente($compCliente){
+            $this -> compCliente = $compCliente;
         }
 
-        public function setId($id){
-            $this -> id = $id;
+        public function setBairroCliente($bairroCliente){
+            $this -> bairroCliente = $bairroCliente;
         }
 
-        public function setId($id){
-            $this -> id = $id;
+        public function setCidadeCliente($cidadeCliente){
+            $this -> cidadeCliente = $cidadeCliente;
         }
 
-        public function setId($id){
-            $this -> id = $id;
+        public function setUfCliente($ufCliente){
+            $this -> ufCliente = $ufCliente;
         }
 
-        public function setId($id){
-            $this -> id = $id;
+        public function setCepCliente($cepCliente){
+            $this -> cepCliente = $cepCliente;
         }
-*/
+
     }
 
 ?>

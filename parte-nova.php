@@ -18,6 +18,7 @@
 
     <link rel="stylesheet" href="./css's/contato.css">
 
+
     <script defer src="https://cdn.lordicon.com/pzdvqjsp.js"></script>
 
 
@@ -55,7 +56,7 @@
                     <lord-icon src="https://cdn.lordicon.com/rhvddzym.json" trigger="hover" colors="primary:#333,secondary:#08a88a" style="width:70px;height:70px">
                     </lord-icon>
                 </a>
-                <a href="links/cadastro-cliente.php">
+                <a href="AREA-CLIENTE/login-cliente.php">
                     <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" colors="primary:#333,secondary:#ff7f7c" style="width:60px;height:60px">
                     </lord-icon>
                 </a>
@@ -72,6 +73,7 @@
                 <form action="">
                     <input type="text" placeholder="Digite seu nome">
                     <input type="password" placeholder="Digite sua senha">
+                    <p class="form-cad">Ainda não tem uma conta? <a href="AREA-CLIENTE/cadastro-cliente.php">Cadastre-se!</a></p>
                     <input type="submit" value="Enviar">
                 </form>
             </aside>
@@ -184,11 +186,11 @@
     <main class="contato" id="contato">
         <aside>
             <span class="texto">Entre em contato</span>
-            <h3>com Missô</h3>
+            <h2>com Missô</h2>
             <form action="">
-                <input type="email" placeholder="Digite seu email">
-                <input type="text" placeholder="Deixe sua mensagem">
-                <input type="submit" value="Enviar">
+                <input class="inserir" type="email" placeholder="Digite seu email">
+                <input class="inserir" type="text" placeholder="Deixe sua mensagem">
+                <input class="submit" type="submit" value="Enviar">
             </form>
         </aside>
 
@@ -230,7 +232,7 @@
                 <li><a href="#menu">Menu</a></li>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#contato">Contato</a></li>
-                <li><a href="../prj-final-atualizado/AREA-ADM/adm.php">ADM</a></li>
+                <li><a href="../prj-atualizado-main/AREA-ADM/adm.php">ADM</a></li>
 
             </ul>
             <p>©2022 All rights reserved     by Missô</p>

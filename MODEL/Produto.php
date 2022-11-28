@@ -7,6 +7,11 @@ include "../conexao.php";
         private $nomeProduto;
         private $categoriaProduto;
         private $precoProduto;
+        private $foto;
+
+        public function getFoto(){
+            return $this -> foto;
+        }
 
         public function getId(){
             return $this -> id;
@@ -22,6 +27,10 @@ include "../conexao.php";
 
         public function getCategoriaProduto(){
             return $this -> categoriaProduto;
+        }
+
+        public function setFoto($foto){
+            $this -> foto = $foto;
         }
 
         public function setId($id){
