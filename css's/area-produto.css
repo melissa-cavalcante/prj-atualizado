@@ -54,6 +54,30 @@ label {
     cursor: pointer;
 }
 
+.formImagem{
+    flex-direction: row;
+}
+
+.imagem{
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+    width: 200px;
+    height: 200px;
+    flex-direction: row;
+}
+
+#preview{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    margin-top: 30px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
 #txtProduto,
 #categoria, #preco {
     width: 500px;
@@ -65,11 +89,6 @@ label {
     font-size: 15px;
     outline: none;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-#preview{
-    width: 200px;
-    height: 300px;
 }
 
 #select {

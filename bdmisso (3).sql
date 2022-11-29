@@ -48,11 +48,11 @@ INSERT INTO `tbcategoria` (`idCategoria`, `cateegoria`) VALUES
 
 CREATE TABLE `tbcliente` (
   `idCliente` int(11) NOT NULL,
-  `nomeClente` varchar(80) NOT NULL,
+  `nomeCliente` varchar(80) NOT NULL,
   `cpfCliente` varchar(25) NOT NULL,
   `emailCliente` varchar(80) NOT NULL,
   `senhaCliente` varchar(80) NOT NULL,
-  `logCliente` varchar(90) NOT NULL,
+  `logradouroCliente` varchar(90) NOT NULL,
   `numLogCliente` varchar(20) NOT NULL,
   `compCliente` varchar(80) NOT NULL,
   `bairroCliente` varchar(70) NOT NULL,

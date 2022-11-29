@@ -102,7 +102,7 @@ label{
 }
 
 .btn {
-    width: 35%;
+    width: 150px;
     height: 100%;
     border: 2 px solid var(--branco);
     border-radius: 20px;
@@ -220,7 +220,7 @@ label{
 }
 
 .botao .enviar{
-    width: 35%;
+    width: 150px;
     height: 100%;
     border: none;
     border-radius: 20px;

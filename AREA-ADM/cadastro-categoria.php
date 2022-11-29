@@ -40,11 +40,18 @@ $categoria = new Categoria;
                     <lord-icon src="https://cdn.lordicon.com/zdiigbly.json" trigger="hover" colors="primary:#fff,secondary:#e74c4c" style="width:50px;height:50px"></lord-icon>&nbsp;<span>produtos</span>
                 </li>
             </a>
-            <a href="./area-produtos.php">
+            <a href="./cadastro-categoria.php">
                 <li>
                     <lord-icon src="https://cdn.lordicon.com/hursldrn.json" trigger="hover" colors="primary:#fff,secondary:#e74c4c" style="width:50px;height:50px"></lord-icon>&nbsp;<span>categorias</span>
                 </li>
             </a>
+
+            <a href="./area-cliente.php">
+                <li>
+                    <lord-icon src="https://cdn.lordicon.com/ljvjsnvh.json" trigger="hover" colors="primary:#fff,secondary:#e74c4c" style="width:50px;height:50px"></lord-icon>&nbsp;<span>clientes</span>
+                </li>
+            </a>
+
             <a href="./area-produtos.php">
                 <li>
                     <lord-icon src="https://cdn.lordicon.com/mjmrmyzg.json" trigger="hover" colors="primary:#fff,secondary:#e74c4c" style="width:50px;height:50px"></lord-icon>&nbsp;<span>vendas</span>
@@ -102,7 +109,7 @@ $categoria = new Categoria;
         <div class="content">
 
             <form action="cadastra-categoria.php" id="formCadastro" method="post">
-                <label>Categoria</label>
+                <p>Aqui você poderá fazer o cadastro de categorias.</p>
                 <input type="text" name="categoria" id="categoria" placeholder="Categoria">
                 <input type="submit" value="cadastrar">
             </form>
@@ -127,7 +134,7 @@ $categoria = new Categoria;
 
                         while ($row = $stmt->fetch(PDO::FETCH_BOTH)) { ?>
                             <tr id="categorias">
-                                <td><?php echo ($row['idCategoria']) ?></td>
+                                <td><b><?php echo ($row['idCategoria']) ?></b></td>
                                 <td><?php echo ($row['cateegoria']) ?></td>
                                 <td><a href="#" class="btn">Editar</a></td>
                                 <td><a href="" class="btn">Excluir</a></td>

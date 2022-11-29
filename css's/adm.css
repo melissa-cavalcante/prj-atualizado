@@ -225,8 +225,8 @@ header{
 
 #formCadastro{
     border-radius: 20px;
-    width: 900px;
-    height: 500px;
+    width: 1450px;
+    height: 550px;
     padding: 20px;
     background: white;
     margin: 20px 25px;
@@ -234,9 +234,20 @@ header{
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     margin-bottom: 30px;
-    margin-top: -101px
+    margin-top: -101px;
+}
+
+#formCadastro > #titulo{
+    padding: 5px;
+    margin-left: 8px;
+}
+
+#formCadastro > p{
+    margin-bottom: 15px;
+    margin-left: 8px;
+    font-size: large;
 }
 
 #formCadastro > #foto{
@@ -248,6 +259,7 @@ header{
 
 #formCadastro > select{
     font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px;
 }
 
 #formCadastro > input[type='submit']{
@@ -257,7 +269,7 @@ header{
     border-radius: 20px;
     width: 100px;
     height: 45px;
-    margin-top: 20px;
+    margin-top: 80px;
 }
 
 .container .content {

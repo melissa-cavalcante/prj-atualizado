@@ -1,3 +1,6 @@
+<?php include "verifica-logado-adm.php"; ?>
+<?php include "../MODEL/Cliente.php"; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -41,10 +44,10 @@
             </a>
             <a href="./area-cliente.php">
                 <li>
-                <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" colors="primary:#fff,secondary:#fff" style="width: 50px;height:50px"></lord-icon>&nbsp;<span>clientes</span>
+                    <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" colors="primary:#fff,secondary:#fff" style="width: 50px;height:50px"></lord-icon>&nbsp;<span>clientes</span>
                 </li>
             </a>
-            <a href="./area-produtos.php">
+            <a href="./.php">
                 <li>
                     <lord-icon src="https://cdn.lordicon.com/mjmrmyzg.json" trigger="hover" colors="primary:#fff,secondary:#e74c4c" style="width:50px;height:50px"></lord-icon>&nbsp;<span>vendas</span>
                 </li>
@@ -74,12 +77,24 @@
                 <div class="card" id="card">
                     <div class="box" id="box">
 
-                        <h3>Clientes</h3>
+                        <?php
 
+                        $pdo = Conexao::conectar();
+                        $stmt = $pdo->prepare("select nomeCliente from tbcliente");
+                        $stmt->execute();
+
+                        $query = "SELECT COUNT(idCliente) AS qtd FROM tbcliente";
+                        $resultadoCliente = $pdo->query($query);
+                        $qtdCliente = $resultadoCliente->fetchAll(PDO::FETCH_COLUMN);
+
+                        ?>
+                        <h1><?php echo ($qtdCliente[0]); ?></h1>
+
+                        <h3>Clientes</h3>
 
                     </div>
                     <div class="icon-case">
-                    <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" colors="primary:#e74c4c,secondary:#e74c4c" style="width:80px;height:80px"></lord-icon>
+                        <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" colors="primary:#e74c4c,secondary:#e74c4c" style="width:80px;height:80px"></lord-icon>
                     </div>
                 </div>
             </div>
@@ -88,7 +103,7 @@
             <div class="content-2">
                 <div class="recent-payments">
                     <div class="title">
-                        <h2>Categorias</h2>
+                        <h2>Clientes</h2>
                         <a href="#" class="btn">Ver Tudo</a>
                     </div>
                     <table>
@@ -96,7 +111,15 @@
                             <td style="font-weight: bolder;">ID do Cliente</td>
                             <td style="font-weight: bolder;">Nome do cliente</td>
                             <td style="font-weight: bolder;">Email do cliente</td>
+                            <td><b>Editar</b></td>
+                            <td><b>Excluir</b></td>
                         </tr>
+
+                        <?php
+                        if (isset($_GET['idCliente'])) {
+                            $clienteDao->delete($_GET['idCliente']);
+                        } ?>
+
                         <?php
                         require_once '../DAO/ClienteDao.php';
                         try {
@@ -109,12 +132,13 @@
                         }
                         ?>
                         <?php foreach ($listacliente as $cliente) { ?>
+
                             <tr>
                                 <th scope="row"><?php echo $cliente['idCliente']; ?></th>
                                 <td><?php echo $cliente['nomeCliente']; ?></td>
                                 <td><?php echo $cliente['emailCliente'] ?></td>
-                                <td>ícone</td>
-                                <td>@ícone</td>
+                                <td id="prod"><a href="#" class="btn">Editar</a></td>
+                                <td id="prod"><a href="?idCliente=<?php echo $row['idCliente']; ?>" class="btn">Excluir</a></td>
                             </tr>
                         <?php } ?>
                     </table>

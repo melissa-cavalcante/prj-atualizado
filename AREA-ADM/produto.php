@@ -28,6 +28,7 @@ $produtoDao = new ProdutoDao();
 
         </header>
 
+
         <ul>
             <a href="./adm.php">
                 <li>
@@ -43,6 +44,13 @@ $produtoDao = new ProdutoDao();
                 <li>
                     <lord-icon src="https://cdn.lordicon.com/hursldrn.json" trigger="hover" colors="primary:#fff,secondary:#e74c4c" style="width:50px;height:50px"></lord-icon>&nbsp;<span>categorias</span>
                 </li>
+
+                <a href="./area-cliente.php">
+                    <li>
+                        <lord-icon src="https://cdn.lordicon.com/ljvjsnvh.json" trigger="hover" colors="primary:#fff,secondary:#e74c4c" style="width:50px;height:50px"></lord-icon>&nbsp;<span>clientes</span>
+                    </li>
+                </a>
+
             </a>
             <a href="./.php">
                 <li>
@@ -96,30 +104,34 @@ $produtoDao = new ProdutoDao();
         </div>
         <div class="content">
 
-            <form action="cadastra-produto.php" id="formCadastro" method="post" enctype="multipart/form-data">
-                <label>Produtos</label>
-                <input type="text" name="produto" id="txtProduto" placeholder="Nome do produto">
-                <input type="text" name="preco" id="preco" placeholder="Preço">
-                <input type="file" accept="image/*" id="foto" name="foto">
-                <div class="form-group col-md-4">
-                    <img id="preview" src="" alt="..." class="img-thumbnail">
+            <div class="formImagem">
+                <div class="form">
+                    <form action="cadastra-produto.php" id="formCadastro" method="post" enctype="multipart/form-data">
+                        <label>Produtos</label>
+                        <input type="text" name="produto" id="txtProduto" placeholder="Nome do produto">
+                        <input type="text" name="preco" id="preco" placeholder="Preço">
+                        <select name="categoria" id="select" placeholder="Categoria">
+                            <?php
+                            $pdo = Conexao::conectar();
+                            $stmt = $pdo->prepare("select idcategoria, cateegoria from tbcategoria");
+                            $stmt->execute();
+                            while ($row = $stmt->fetch(PDO::FETCH_BOTH)) { ?>
+                                <option value="<?php echo $row['idcategoria']; ?>"> <?php echo $row['cateegoria']; ?> </option>
+                            <?php } ?>
+                        </select>
+                        <div class="imagem">
+                            <input type="file" accept="image/*" id="foto" name="foto">
+                            <img id="preview" src="" alt="..." class="img-thumbnail">
+                        </div>
+                        <input type="submit" value="cadastrar">
                 </div>
-                <select name="categoria" id="select" placeholder="Categoria">
-                    <?php
-                    $pdo = Conexao::conectar();
-                    $stmt = $pdo->prepare("select idcategoria, cateegoria from tbcategoria");
-                    $stmt->execute();
-                    while ($row = $stmt->fetch(PDO::FETCH_BOTH)) { ?>
-                        <option value="<?php echo $row['idcategoria']; ?>"> <?php echo $row['cateegoria']; ?> </option>
-                    <?php } ?>
-                </select>
-                <input type="submit" value="cadastrar">
-            </form>
+                </form>
+            </div>
 
             <div class="content-2">
                 <div class="recent-payments">
                     <div class="title">
-                        <h2>Pagamentos Recentes</h2>
+                        <h2>Produtos</h2>
                         <a href="#" class="btn">Ver Tudo</a>
                     </div>
                     <table>

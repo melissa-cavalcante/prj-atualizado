@@ -115,6 +115,7 @@
                         <option id="option">CE</option>
                         <option id="option">ES</option>
                         <option id="option">GO</option>
+                        <option id="option">SP</option>
                     </select>
                     
                 </div>
@@ -140,7 +141,7 @@
             <div class="botao">
 
                 <div class="voltar">
-                    <button class="btn">Voltar<a href="../parte-nova.php"></a></button>
+                    <button class="btn"><a href="../parte-nova.php">Voltar</a></button>
                 </div>
                 <div class="cadastrar">
                     <input class="btn" type="submit" value="Cadastrar">

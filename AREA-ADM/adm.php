@@ -1,6 +1,7 @@
 <?php include "verifica-logado-adm.php"; ?>
 <?php include "../MODEL/Categoria.php"; ?>
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -40,11 +41,17 @@
                     <lord-icon src="https://cdn.lordicon.com/hursldrn.json" trigger="hover" colors="primary:#fff,secondary:#e74c4c" style="width:50px;height:50px"></lord-icon>&nbsp;<span>categorias</span>
                 </li>
             </a>
-            <a href="./.php">
+
+            <a href="./area-cliente.php">
                 <li>
-                    <lord-icon src="https://cdn.lordicon.com/mjmrmyzg.json" trigger="hover" colors="primary:#fff,secondary:#e74c4c" style="width:50px;height:50px"></lord-icon>&nbsp;<span>vendas</span>
+                    <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" colors="primary:#fff,secondary:#e74c4c" style="width: 50px;height:50px"></lord-icon>&nbsp;<span>clientes</span>
                 </li>
-            </a>
+
+                <a href="./.php">
+                    <li>
+                        <lord-icon src="https://cdn.lordicon.com/mjmrmyzg.json" trigger="hover" colors="primary:#fff,secondary:#e74c4c" style="width:50px;height:50px"></lord-icon>&nbsp;<span>vendas</span>
+                    </li>
+                </a>
         </ul>
     </div>
     <div class="container">
@@ -81,11 +88,7 @@
 
                         ?>
                         <h1><?php echo ($qtdCategoria[0]); ?></h1>
-                        <?php
-                        while ($row = $stmt->fetch(PDO::FETCH_BOTH)) { ?>
 
-
-                        <?php } ?>
 
                         <h3>Categorias</h3>
                     </div>
@@ -117,7 +120,20 @@
                 </div>
                 <div class="card">
                     <div class="box">
-                        <h1>1000</h1>
+
+                        <?php
+
+                        $pdo = Conexao::conectar();
+                        $stmt = $pdo->prepare("select nomeCliente from tbcliente");
+                        $stmt->execute();
+
+                        $query = "SELECT COUNT(idCliente) AS qtd FROM tbcliente";
+                        $resultadoCliente = $pdo->query($query);
+                        $qtdCliente = $resultadoCliente->fetchAll(PDO::FETCH_COLUMN);
+
+                        ?>
+                        <h1><?php echo ($qtdCliente[0]); ?></h1>
+                        
                         <h3>Clientes</h3>
                     </div>
                     <div class="icon-case">

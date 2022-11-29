@@ -43,7 +43,7 @@
                     </div>
                     
                     <div class="botao">
-                        <button class="btn">Voltar<a href="../parte-nova.php"></a></button>  
+                        <button class="btn"><a href="../parte-nova.php">Voltar</a></button>  
                         <input class="enviar" type="submit" value="Confirmar">  
                     </div>
             </form>
